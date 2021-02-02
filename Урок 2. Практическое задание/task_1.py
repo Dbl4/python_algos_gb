@@ -28,3 +28,53 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+
+def my_func():
+    """Рекурсия"""
+    val = input("Введите операцию (+, -, *, / или 0 для выхода): ")
+
+    if val == '0':
+        return "Выход"
+
+    else:
+        if val in "+-*/":
+            try:
+                num_1 = int(input("Введите первое число: "))
+                num_2 = int(input("Введите второе число: "))
+
+                if val == '+':
+                    res = num_1 + num_2
+                    print(f"Ваш результат {res}")
+                    return my_func()
+
+                elif val == '-':
+                    res = num_1 - num_2
+                    print(f"Ваш результат {res}")
+                    return my_func()
+
+                elif val == '*':
+                    res = num_1 * num_2
+                    print(f"Ваш результат {res}")
+                    return my_func()
+
+                elif val == '/':
+                    if num_2 != 0:
+                        res = num_1 / num_2
+                        print(f"Ваш результат {res}")
+                    else:
+                        print("Деление на 0 невозможно")
+                    return my_func()
+
+            except ValueError:
+                print(
+                    "Вы вместо трехзначного числа ввели строку. Исправьтесь"
+                )
+                return my_func()
+
+        else:
+            print("Введен неверный символ, попробуйте еще раз")
+            return my_func()
+
+
+my_func()
